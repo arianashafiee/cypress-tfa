@@ -8,26 +8,61 @@
     "activeTab",
     "http://localhost/*",
     "https://x.com/*",
-    "storage"
+    "storage",
+    "https://github.com/*"
   ],
-  "host_permissions": ["http://localhost/*", "https://x.com/*"],
+  "host_permissions": [
+    "http://localhost/*",
+    "https://x.com/*",
+    "https://github.com/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },
   "externally_connectable": {
-    "matches": ["http://localhost/*"]
+    "matches": [
+      "http://localhost/*"
+    ]
   },
   "content_scripts": [
     {
-      "matches": ["https://x.com/*", "https://www.x.com/*"],
-      "js": ["X/contentX.js"],
+      "matches": [
+        "https://x.com/*",
+        "https://www.x.com/*"
+      ],
+      "js": [
+        "X/contentX.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://github.com/*"
+      ],
+      "js": [
+        "Git/contentGit.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["X/authX.html", "X/authX.js"],
-      "matches": ["https://x.com/*"]
+      "resources": [
+        "X/authX.html",
+        "X/authX.js"
+      ],
+      "matches": [
+        "https://x.com/*"
+      ]
+    },
+    {
+      "resources": [
+        "Git/authGit.html",
+        "Git/authGit.js"
+      ],
+      "matches": [
+        "https://github.com/*"
+      ]
     }
   ]
 }
