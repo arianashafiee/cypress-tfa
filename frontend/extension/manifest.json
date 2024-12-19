@@ -3,16 +3,31 @@
   "name": "Cypress Authentication Extension",
   "version": "1.0",
   "description": "Intercepts login forms and triggers MFA before submit.",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "http://localhost/*",
+    "https://x.com/*",
+    "storage"
+  ],
   "host_permissions": ["http://localhost/*", "https://x.com/*"],
   "background": {
     "service_worker": "background.js"
+  },
+  "externally_connectable": {
+    "matches": ["http://localhost/*"]
   },
   "content_scripts": [
     {
       "matches": ["https://x.com/*", "https://www.x.com/*"],
       "js": ["X/contentX.js"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["X/authX.html", "X/authX.js"],
+      "matches": ["https://x.com/*"]
     }
   ]
 }
