@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Cypress Authentication Extension",
-  "version": "1.0",
-  "description": "Intercepts login forms and triggers MFA before submit.",
+  "name": "Custom Authentication Extension",
+  "version": "1.1",
+  "description": "Intercepts login forms and triggers a custom authentication flow.",
   "permissions": [
     "scripting",
     "activeTab",
     "http://localhost/*",
     "https://x.com/*",
-    "storage",
     "https://github.com/*",
     "https://www.instagram.com/*",
-    "https://incomee.co/*"
+    "https://incomee.co/*",
+    "storage"
   ],
   "host_permissions": [
     "http://localhost/*",
@@ -24,46 +24,27 @@
     "service_worker": "background.js"
   },
   "externally_connectable": {
-    "matches": [
-      "http://localhost/*"
-    ]
+    "matches": ["http://localhost/*"]
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://x.com/*",
-        "https://www.x.com/*"
-      ],
-      "js": [
-        "X/contentX.js"
-      ],
+      "matches": ["https://x.com/*", "https://www.x.com/*","http://localhost/*"],
+      "js": ["X/contentX.js"],
       "run_at": "document_idle"
     },
     {
-      "matches": [
-        "https://github.com/*"
-      ],
-      "js": [
-        "Git/contentGit.js"
-      ],
+      "matches": ["https://github.com/*"],
+      "js": ["Git/contentGit.js"],
       "run_at": "document_idle"
     },
     {
-      "matches": [
-        "https://www.instagram.com/*"
-      ],
-      "js": [
-        "Instagram/contentInstagram.js"
-      ],
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["Instagram/contentInstagram.js"],
       "run_at": "document_idle"
     },
     {
-      "matches": [
-        "https://incomee.co/*"
-      ],
-      "js": [
-        "Incomee/contentIncomee.js"
-      ],
+      "matches": ["https://incomee.co/*"],
+      "js": ["Incomee/contentIncomee.js"],
       "run_at": "document_end"
     }
   ],
@@ -73,36 +54,19 @@
         "X/authX.html",
         "X/authX.js"
       ],
-      "matches": [
-        "https://x.com/*"
-      ]
+      "matches": ["https://x.com/*"]
     },
     {
-      "resources": [
-        "Git/authGit.html",
-        "Git/authGit.js"
-      ],
-      "matches": [
-        "https://github.com/*"
-      ]
+      "resources": ["Git/authGit.html", "Git/authGit.js"],
+      "matches": ["https://github.com/*"]
     },
     {
-      "resources": [
-        "Instagram/authInstagram.html",
-        "Instagram/authInstagram.js"
-      ],
-      "matches": [
-        "https://www.instagram.com/*"
-      ]
+      "resources": ["Instagram/authInstagram.html", "Instagram/authInstagram.js"],
+      "matches": ["https://www.instagram.com/*"]
     },
     {
-      "resources": [
-        "Incomee/authIncomee.html",
-        "Incomee/authIncomee.js"
-      ],
-      "matches": [
-        "https://incomee.co/*"
-      ]
+      "resources": ["Incomee/authIncomee.html", "Incomee/authIncomee.js"],
+      "matches": ["https://incomee.co/*"]
     }
   ]
 }
