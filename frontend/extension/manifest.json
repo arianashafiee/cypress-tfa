@@ -9,12 +9,14 @@
     "http://localhost/*",
     "https://x.com/*",
     "storage",
-    "https://github.com/*"
+    "https://github.com/*",
+    "https://www.instagram.com/*"
   ],
   "host_permissions": [
     "http://localhost/*",
     "https://x.com/*",
-    "https://github.com/*"
+    "https://github.com/*",
+    "https://www.instagram.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -43,6 +45,15 @@
         "Git/contentGit.js"
       ],
       "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "js": [
+        "Instagram/contentInstagram.js"
+      ],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
@@ -62,6 +73,15 @@
       ],
       "matches": [
         "https://github.com/*"
+      ]
+    },
+    {
+      "resources": [
+        "Instagram/authInstagram.html",
+        "Instagram/authInstagram.js"
+      ],
+      "matches": [
+        "https://www.instagram.com/*"
       ]
     }
   ]
