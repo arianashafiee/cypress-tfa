@@ -1,5 +1,7 @@
 # Cypress TFA
 
+See notion article: https://polar-galette-e56.notion.site/CypressTFA-Triple-Factor-Facial-Auth-Using-Hand-Motions-1c783a3d3138808c87dcfffffefb1175
+
 Triple-factor authentication that verifies users with liveness detection, facial recognition, and hand gestures. A Chrome extension intercepts logins on supported sites and opens a camera-based auth flow backed by a FastAPI server.
 
 ## How it works
